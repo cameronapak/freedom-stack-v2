@@ -58,7 +58,9 @@ import Layout from '../layouts/Layout.astro';
   </main>
 
   <script>
+    // @ts-ignore
     import Alpine from "alpinejs";
+    // @ts-ignore
     import { ConvexClient } from "convex/browser";
     import { api } from "../../convex/_generated/api.js";
     
@@ -72,8 +74,9 @@ import Layout from '../layouts/Layout.astro';
           await convexClient.mutation(api.messages.send, { author, text });
         },
         $form: {
-          async '@submit'({ target: formElement, preventDefault }: { target: HTMLFormElement, preventDefault: () => void }) {
-            preventDefault();
+          '@submit': async function(this: { sendMessage: (author: string, text: string) => Promise<void> }, e: Event) {
+            e.preventDefault();
+            const formElement = e.target as HTMLFormElement;
             const formData = new FormData(formElement);
             const author = formData.get('author') as string;
             const text = formData.get('text') as string;
@@ -83,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
           }
         },
         init() {
-          convexClient.onUpdate(api.messages.list, {}, (messages) => {
+          convexClient.onUpdate(api.messages.list, {}, (messages: typeof api.messages.list._returnType) => {
             this.messages = messages;
           });
         }
