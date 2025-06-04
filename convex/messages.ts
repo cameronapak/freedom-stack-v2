@@ -27,3 +27,12 @@ export const send = mutation({
     });
   },
 }); 
+
+export const deleteMessage = mutation({
+  args: {
+    id: v.id("messages"),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.delete(args.id);
+  },
+});

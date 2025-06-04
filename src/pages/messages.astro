@@ -51,6 +51,12 @@ import Layout from '../layouts/Layout.astro';
             <div class="font-semibold text-gray-900" x-text="message.author"></div>
             <div class="text-gray-700 mt-1" x-text="message.text"></div>
             <div class="text-xs text-gray-500 mt-2" x-text="new Date(message._creationTime).toLocaleString()"></div>
+            <button 
+              @click="deleteMessage(message._id)"
+              class="bg-red-600 text-white px-2 py-1 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            >
+              Delete
+            </button>
           </div>
         </template>
       </div>
@@ -72,6 +78,9 @@ import Layout from '../layouts/Layout.astro';
         messages: [] as typeof api.messages.list._returnType,
         async sendMessage(author: string, text: string) {
           await convexClient.mutation(api.messages.send, { author, text });
+        },
+        async deleteMessage(id: string) {
+          await convexClient.mutation(api.messages.deleteMessage, { id });
         },
         $form: {
           '@submit': async function(this: { sendMessage: (author: string, text: string) => Promise<void> }, e: Event) {
