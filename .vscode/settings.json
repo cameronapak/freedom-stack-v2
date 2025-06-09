@@ -13,6 +13,7 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.rulers": [120],
   "files.associations": {
-    "*.mdx": "markdown"
+    "*.mdx": "markdown",
+    "wrangler.json": "jsonc"
   }
 }

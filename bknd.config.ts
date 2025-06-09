@@ -1,5 +1,6 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
+import { AppEvents } from "bknd";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
 import { boolean, em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";

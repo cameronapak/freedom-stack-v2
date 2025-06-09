@@ -60,3 +60,13 @@ Now, let's run the app!
 ```bash
 npm run dev
 ```
+
+## Deployment
+
+We use [Alchemy](https://alchemy.run/docs/what-is-alchemy), _"an embeddable, zero-dependency, Infrastructure-as-Code (IaC) library written in pure TypeScript that runs anywhere that JavaScript runs - including the browser, serverless functions or even durable workflows."_
+
+We will be using Cloudflare + Alchemy to easily setup infrastructure for Freedom Stack v2, but you can use whatever works best for you.
+
+```bash
+wrangler login
+```
