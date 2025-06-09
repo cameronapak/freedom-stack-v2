@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "alchemy": "npx tsx alchemy.run.ts",
     "build": "astro build",
     "preview": "astro build && wrangler dev",
     "astro": "astro",
