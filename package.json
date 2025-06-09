@@ -33,10 +33,13 @@
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",
+    "@types/node": "^22.15.30",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.12",
-    "@types/node": "^22.15.30",
     "wrangler": "^4.19.1"
+  },
+  "peerDependencies": {
+    "kysely-d1": "^0.4.0"
   }
 }

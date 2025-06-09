@@ -1,5 +1,5 @@
 {
-  "name": "astro-website",
+  "name": "fs-v2-astro-website",
   "main": "dist/_worker.js",
   "compatibility_date": "2025-04-20",
   "compatibility_flags": ["nodejs_compat"],
@@ -7,8 +7,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": "20eca9c3-9508-434c-9ea6-8bc4d22d66ac",
-      "database_name": "fs-db-dev"
+      "database_id": "8595be2e-34af-4f8d-8960-eb91f80c5fcc",
+      "database_name": "fs-v2-db"
     }
   ]
 }

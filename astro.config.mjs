@@ -20,7 +20,9 @@ export default defineConfig({
   integrations: [react()],
   adapter: cloudflare({
     platformProxy: {
-      enabled: true
+      enabled: true,
+      persist: true,
+      configPath: "wrangler.jsonc"
     }
   })
 });

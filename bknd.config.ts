@@ -1,9 +1,8 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
-import { AppEvents } from "bknd";
-import { registerLocalMediaAdapter } from "bknd/adapter/node";
-import { boolean, em, entity, number, text } from "bknd/data";
+import { em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";
+import { d1 } from "bknd/adapter/cloudflare";
 
 // since we're running in node, we can register the local media adapter
 // const local = registerLocalMediaAdapter();
@@ -38,11 +37,8 @@ declare module "bknd/core" {
 }
 
 export default {
-  // we can use any libsql config, and if omitted, uses in-memory
   app: (ctx: APIContext) => ({
-    connection: {
-      url: process.env.DB_URL ?? "file:.astro/content.db"
-    }
+    connection: d1({ binding: ctx.locals?.runtime?.env?.DB || "" })
   }),
   // an initial config is only applied if the database is empty
   initialConfig: {

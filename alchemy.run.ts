@@ -10,11 +10,11 @@ const app = await alchemy("my-first-app", {
   phase: process.argv.includes("--destroy") ? "destroy" : "up"
 });
 
-const db = await D1Database("fs-db-dev", {
-  name: "fs-db-dev"
+const db = await D1Database("fs-v2-db", {
+  name: "fs-v2-db"
 });
 
-const worker = await Website("astro-website", {
+const worker = await Website("fs-v2-astro-website", {
   // Default build command, can be overridden by props.command
   command: "npm run build",
   // Default entry point for @astrojs/cloudflare adapter
@@ -29,14 +29,6 @@ const worker = await Website("astro-website", {
     DB: db
   }
 });
-
-// const worker = await Vite("astro-website", {
-//   compatibilityFlags: ["nodejs_compat"],
-//   main: "./dist/_worker.js/index.js",
-//   bindings: {
-//     DB: db
-//   }
-// });
 
 console.log({
   url: worker.url
