@@ -1,5 +1,8 @@
+/// <reference types="node" />
+
 import alchemy from "alchemy";
-import { Worker, D1Database, WranglerJson } from "alchemy/cloudflare";
+import { D1Database, WranglerJson, Vite, Website } from "alchemy/cloudflare";
+import path from "node:path";
 
 // Initialize the Alchemy application scope
 const app = await alchemy("my-first-app", {
@@ -7,17 +10,36 @@ const app = await alchemy("my-first-app", {
   phase: process.argv.includes("--destroy") ? "destroy" : "up"
 });
 
-const db = await D1Database("fs-db", {
-  name: "fs-db"
+const db = await D1Database("fs-db-dev", {
+  name: "fs-db-dev"
 });
 
-const worker = await Worker("fs-worker", {
-  name: "fs-worker",
+const worker = await Website("astro-website", {
+  // Default build command, can be overridden by props.command
+  command: "npm run build",
+  // Default entry point for @astrojs/cloudflare adapter
+  main: path.join("dist", "_worker.js"),
+  // Default static assets directory for @astrojs/cloudflare adapter
+  assets: "dist",
+  // Enable nodejs_compat flag for Astro compatibility
   compatibilityFlags: ["nodejs_compat"],
-  entrypoint: "./dist/_worker.js/index.js",
+  // Enable wrangler by default, common for Astro/Cloudflare deployments
+  wrangler: true,
   bindings: {
     DB: db
   }
+});
+
+// const worker = await Vite("astro-website", {
+//   compatibilityFlags: ["nodejs_compat"],
+//   main: "./dist/_worker.js/index.js",
+//   bindings: {
+//     DB: db
+//   }
+// });
+
+console.log({
+  url: worker.url
 });
 
 // Generate wrangler.json for local development

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "alchemy": "npx tsx alchemy.run.ts",
+    "alchemy:destroy": "npx tsx alchemy.run.ts --destroy",
     "build": "astro build",
     "preview": "astro build && wrangler dev",
     "astro": "astro",

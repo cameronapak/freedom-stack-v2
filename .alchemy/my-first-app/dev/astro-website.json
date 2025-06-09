@@ -1,0 +1,18 @@
+{
+  "kind": "alchemy::Scope",
+  "id": "astro-website",
+  "seq": 1,
+  "data": {},
+  "fqn": "",
+  "props": {},
+  "status": "created",
+  "output": {
+    "Symbol(alchemy::ResourceID)": "astro-website",
+    "Symbol(alchemy::ResourceFQN)": "",
+    "Symbol(alchemy::ResourceKind)": "alchemy::Scope",
+    "Symbol(alchemy::ResourceScope)": {
+      "@scope": null
+    },
+    "Symbol(alchemy::ResourceSeq)": 1
+  }
+}

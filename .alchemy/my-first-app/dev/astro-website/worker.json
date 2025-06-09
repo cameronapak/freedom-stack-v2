@@ -1,0 +1,457 @@
+{
+  "kind": "cloudflare::Worker",
+  "id": "worker",
+  "fqn": "my-first-app/dev/astro-website/worker",
+  "seq": 3,
+  "data": {},
+  "status": "updated",
+  "output": {
+    "Symbol(alchemy::ResourceKind)": "cloudflare::Worker",
+    "Symbol(alchemy::ResourceID)": "worker",
+    "Symbol(alchemy::ResourceFQN)": "my-first-app/dev/astro-website/worker",
+    "Symbol(alchemy::ResourceScope)": {
+      "@scope": null
+    },
+    "Symbol(alchemy::ResourceSeq)": 3,
+    "command": "npm run build",
+    "main": "dist/_worker.js",
+    "assets": {
+      "html_handling": "auto-trailing-slash",
+      "not_found_handling": "single-page-application",
+      "run_worker_first": false
+    },
+    "compatibilityFlags": [
+      "nodejs_compat"
+    ],
+    "wrangler": true,
+    "bindings": {
+      "DB": {
+        "Symbol(alchemy::ResourceKind)": "cloudflare::D1Database",
+        "Symbol(alchemy::ResourceID)": "fs-db-dev",
+        "Symbol(alchemy::ResourceFQN)": "my-first-app/dev/fs-db-dev",
+        "Symbol(alchemy::ResourceScope)": {
+          "@scope": null
+        },
+        "Symbol(alchemy::ResourceSeq)": 0,
+        "type": "d1",
+        "id": "20eca9c3-9508-434c-9ea6-8bc4d22d66ac",
+        "name": "fs-db-dev",
+        "fileSize": 8192,
+        "numTables": 0,
+        "version": "production",
+        "accountId": "87e6116c7228bf9b9e9b7d19e2c28e57"
+      },
+      "ASSETS": {
+        "Symbol(alchemy::ResourceKind)": "cloudflare::Asset",
+        "Symbol(alchemy::ResourceID)": "assets",
+        "Symbol(alchemy::ResourceFQN)": "my-first-app/dev/astro-website/assets",
+        "Symbol(alchemy::ResourceScope)": {
+          "@scope": null
+        },
+        "Symbol(alchemy::ResourceSeq)": 2,
+        "id": "assets",
+        "type": "assets",
+        "path": "dist",
+        "files": [
+          {
+            "path": ".assetsignore",
+            "filePath": "dist/.assetsignore",
+            "contentType": "application/null"
+          },
+          {
+            "path": "_astro/Layout.astro_astro_type_script_index_0_lang.76o3Buaa.js",
+            "filePath": "dist/_astro/Layout.astro_astro_type_script_index_0_lang.76o3Buaa.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/_admin_.CJlyoYAQ.css",
+            "filePath": "dist/_astro/_admin_.CJlyoYAQ.css",
+            "contentType": "text/css"
+          },
+          {
+            "path": "_astro/client.Up2Hkbyd.js",
+            "filePath": "dist/_astro/client.Up2Hkbyd.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/index.D8R6ytBx.css",
+            "filePath": "dist/_astro/index.D8R6ytBx.css",
+            "contentType": "text/css"
+          },
+          {
+            "path": "_astro/index.N6C3Up5A.js",
+            "filePath": "dist/_astro/index.N6C3Up5A.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/ui.Cp5AA5ci.js",
+            "filePath": "dist/_astro/ui.Cp5AA5ci.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_routes.json",
+            "filePath": "dist/_routes.json",
+            "contentType": "application/json"
+          },
+          {
+            "path": "_worker.js/_@astrojs-ssr-adapter.mjs",
+            "filePath": "dist/_worker.js/_@astrojs-ssr-adapter.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/_astro-internal_middleware.mjs",
+            "filePath": "dist/_worker.js/_astro-internal_middleware.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/_noop-actions.mjs",
+            "filePath": "dist/_worker.js/_noop-actions.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/Layout_Co7HziVl.mjs",
+            "filePath": "dist/_worker.js/chunks/Layout_Co7HziVl.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/_@astrojs-ssr-adapter_1KT6roWP.mjs",
+            "filePath": "dist/_worker.js/chunks/_@astrojs-ssr-adapter_1KT6roWP.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/astro/server_C8vVOH8G.mjs",
+            "filePath": "dist/_worker.js/chunks/astro/server_C8vVOH8G.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/astro-designed-error-pages_DuwJl2PN.mjs",
+            "filePath": "dist/_worker.js/chunks/astro-designed-error-pages_DuwJl2PN.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/bknd.config_m27Qk-4t.mjs",
+            "filePath": "dist/_worker.js/chunks/bknd.config_m27Qk-4t.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/bknd_BKPYnq1E.mjs",
+            "filePath": "dist/_worker.js/chunks/bknd_BKPYnq1E.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/cloudflare-kv-binding_DMly_2Gl.mjs",
+            "filePath": "dist/_worker.js/chunks/cloudflare-kv-binding_DMly_2Gl.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/index_Bos_IFPf.mjs",
+            "filePath": "dist/_worker.js/chunks/index_Bos_IFPf.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/noop-middleware_BS-seCif.mjs",
+            "filePath": "dist/_worker.js/chunks/noop-middleware_BS-seCif.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/index.js",
+            "filePath": "dist/_worker.js/index.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_worker.js/manifest_IvPXL3eN.mjs",
+            "filePath": "dist/_worker.js/manifest_IvPXL3eN.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/_image.astro.mjs",
+            "filePath": "dist/_worker.js/pages/_image.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/admin/_---admin_.astro.mjs",
+            "filePath": "dist/_worker.js/pages/admin/_---admin_.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/api/_---api_.astro.mjs",
+            "filePath": "dist/_worker.js/pages/api/_---api_.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/index.astro.mjs",
+            "filePath": "dist/_worker.js/pages/index.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/login.astro.mjs",
+            "filePath": "dist/_worker.js/pages/login.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/register.astro.mjs",
+            "filePath": "dist/_worker.js/pages/register.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/renderers.mjs",
+            "filePath": "dist/_worker.js/renderers.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "favicon.svg",
+            "filePath": "dist/favicon.svg",
+            "contentType": "image/svg+xml"
+          },
+          {
+            "path": "temp/uploads/5oBXmkHJk3PWESFr.png",
+            "filePath": "dist/temp/uploads/5oBXmkHJk3PWESFr.png",
+            "contentType": "image/png"
+          },
+          {
+            "path": "temp/uploads/CBGvO0XmceD1t4tz.png",
+            "filePath": "dist/temp/uploads/CBGvO0XmceD1t4tz.png",
+            "contentType": "image/png"
+          },
+          {
+            "path": "temp/uploads/camoji.png",
+            "filePath": "dist/temp/uploads/camoji.png",
+            "contentType": "image/png"
+          }
+        ],
+        "createdAt": 1749466885053,
+        "updatedAt": 1749467652842
+      }
+    },
+    "compatibilityDate": "2025-04-20",
+    "name": "astro-website",
+    "entrypoint": "dist/_worker.js",
+    "url": "https://astro-website.cameronandrewpak.workers.dev",
+    "adopt": true,
+    "type": "service",
+    "id": "worker",
+    "format": "esm",
+    "observability": {
+      "enabled": true
+    },
+    "createdAt": 1749467663473,
+    "updatedAt": 1749467663473
+  },
+  "props": {
+    "command": "npm run build",
+    "main": "dist/_worker.js",
+    "assets": {
+      "html_handling": "auto-trailing-slash",
+      "not_found_handling": "single-page-application",
+      "run_worker_first": false
+    },
+    "compatibilityFlags": [
+      "nodejs_compat"
+    ],
+    "wrangler": true,
+    "bindings": {
+      "DB": {
+        "Symbol(alchemy::ResourceKind)": "cloudflare::D1Database",
+        "Symbol(alchemy::ResourceID)": "fs-db-dev",
+        "Symbol(alchemy::ResourceFQN)": "my-first-app/dev/fs-db-dev",
+        "Symbol(alchemy::ResourceScope)": {
+          "@scope": null
+        },
+        "Symbol(alchemy::ResourceSeq)": 0,
+        "type": "d1",
+        "id": "20eca9c3-9508-434c-9ea6-8bc4d22d66ac",
+        "name": "fs-db-dev",
+        "fileSize": 8192,
+        "numTables": 0,
+        "version": "production",
+        "accountId": "87e6116c7228bf9b9e9b7d19e2c28e57"
+      },
+      "ASSETS": {
+        "Symbol(alchemy::ResourceKind)": "cloudflare::Asset",
+        "Symbol(alchemy::ResourceID)": "assets",
+        "Symbol(alchemy::ResourceFQN)": "my-first-app/dev/astro-website/assets",
+        "Symbol(alchemy::ResourceScope)": {
+          "@scope": null
+        },
+        "Symbol(alchemy::ResourceSeq)": 2,
+        "id": "assets",
+        "type": "assets",
+        "path": "dist",
+        "files": [
+          {
+            "path": ".assetsignore",
+            "filePath": "dist/.assetsignore",
+            "contentType": "application/null"
+          },
+          {
+            "path": "_astro/Layout.astro_astro_type_script_index_0_lang.76o3Buaa.js",
+            "filePath": "dist/_astro/Layout.astro_astro_type_script_index_0_lang.76o3Buaa.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/_admin_.CJlyoYAQ.css",
+            "filePath": "dist/_astro/_admin_.CJlyoYAQ.css",
+            "contentType": "text/css"
+          },
+          {
+            "path": "_astro/client.Up2Hkbyd.js",
+            "filePath": "dist/_astro/client.Up2Hkbyd.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/index.D8R6ytBx.css",
+            "filePath": "dist/_astro/index.D8R6ytBx.css",
+            "contentType": "text/css"
+          },
+          {
+            "path": "_astro/index.N6C3Up5A.js",
+            "filePath": "dist/_astro/index.N6C3Up5A.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_astro/ui.Cp5AA5ci.js",
+            "filePath": "dist/_astro/ui.Cp5AA5ci.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_routes.json",
+            "filePath": "dist/_routes.json",
+            "contentType": "application/json"
+          },
+          {
+            "path": "_worker.js/_@astrojs-ssr-adapter.mjs",
+            "filePath": "dist/_worker.js/_@astrojs-ssr-adapter.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/_astro-internal_middleware.mjs",
+            "filePath": "dist/_worker.js/_astro-internal_middleware.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/_noop-actions.mjs",
+            "filePath": "dist/_worker.js/_noop-actions.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/Layout_Co7HziVl.mjs",
+            "filePath": "dist/_worker.js/chunks/Layout_Co7HziVl.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/_@astrojs-ssr-adapter_1KT6roWP.mjs",
+            "filePath": "dist/_worker.js/chunks/_@astrojs-ssr-adapter_1KT6roWP.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/astro/server_C8vVOH8G.mjs",
+            "filePath": "dist/_worker.js/chunks/astro/server_C8vVOH8G.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/astro-designed-error-pages_DuwJl2PN.mjs",
+            "filePath": "dist/_worker.js/chunks/astro-designed-error-pages_DuwJl2PN.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/bknd.config_m27Qk-4t.mjs",
+            "filePath": "dist/_worker.js/chunks/bknd.config_m27Qk-4t.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/bknd_BKPYnq1E.mjs",
+            "filePath": "dist/_worker.js/chunks/bknd_BKPYnq1E.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/cloudflare-kv-binding_DMly_2Gl.mjs",
+            "filePath": "dist/_worker.js/chunks/cloudflare-kv-binding_DMly_2Gl.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/index_Bos_IFPf.mjs",
+            "filePath": "dist/_worker.js/chunks/index_Bos_IFPf.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/chunks/noop-middleware_BS-seCif.mjs",
+            "filePath": "dist/_worker.js/chunks/noop-middleware_BS-seCif.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/index.js",
+            "filePath": "dist/_worker.js/index.js",
+            "contentType": "application/javascript"
+          },
+          {
+            "path": "_worker.js/manifest_IvPXL3eN.mjs",
+            "filePath": "dist/_worker.js/manifest_IvPXL3eN.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/_image.astro.mjs",
+            "filePath": "dist/_worker.js/pages/_image.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/admin/_---admin_.astro.mjs",
+            "filePath": "dist/_worker.js/pages/admin/_---admin_.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/api/_---api_.astro.mjs",
+            "filePath": "dist/_worker.js/pages/api/_---api_.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/index.astro.mjs",
+            "filePath": "dist/_worker.js/pages/index.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/login.astro.mjs",
+            "filePath": "dist/_worker.js/pages/login.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/pages/register.astro.mjs",
+            "filePath": "dist/_worker.js/pages/register.astro.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "_worker.js/renderers.mjs",
+            "filePath": "dist/_worker.js/renderers.mjs",
+            "contentType": "application/javascript+module"
+          },
+          {
+            "path": "favicon.svg",
+            "filePath": "dist/favicon.svg",
+            "contentType": "image/svg+xml"
+          },
+          {
+            "path": "temp/uploads/5oBXmkHJk3PWESFr.png",
+            "filePath": "dist/temp/uploads/5oBXmkHJk3PWESFr.png",
+            "contentType": "image/png"
+          },
+          {
+            "path": "temp/uploads/CBGvO0XmceD1t4tz.png",
+            "filePath": "dist/temp/uploads/CBGvO0XmceD1t4tz.png",
+            "contentType": "image/png"
+          },
+          {
+            "path": "temp/uploads/camoji.png",
+            "filePath": "dist/temp/uploads/camoji.png",
+            "contentType": "image/png"
+          }
+        ],
+        "createdAt": 1749466885053,
+        "updatedAt": 1749467652842
+      }
+    },
+    "compatibilityDate": "2025-04-20",
+    "name": "astro-website",
+    "entrypoint": "dist/_worker.js",
+    "url": true,
+    "adopt": true
+  }
+}
