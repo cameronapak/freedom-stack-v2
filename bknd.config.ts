@@ -6,7 +6,7 @@ import { boolean, em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";
 
 // since we're running in node, we can register the local media adapter
-const local = registerLocalMediaAdapter();
+// const local = registerLocalMediaAdapter();
 
 const schema = em(
   {
@@ -77,14 +77,14 @@ export default {
           is_default: true
         }
       }
-    },
-    // ... and media
-    media: {
-      enabled: true,
-      adapter: local({
-        path: "./public/temp/uploads"
-      })
     }
+    // ... and media
+    // media: {
+    //   enabled: true,
+    //   adapter: local({
+    //     path: "./public/temp/uploads"
+    //   })
+    // }
   },
   options: {
     // the seed option is only executed if the database was empty
