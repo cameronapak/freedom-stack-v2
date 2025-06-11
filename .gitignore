@@ -31,3 +31,9 @@ pnpm-debug.log*
 # Bknd
 data.db
 /public/temp/uploads/*
+
+# wrangler files
+.wrangler
+.dev.vars*
+
+.alchemy/

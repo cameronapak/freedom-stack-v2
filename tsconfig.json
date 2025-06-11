@@ -8,7 +8,9 @@
       "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "strictNullChecks": true,
+    "types": ["./worker-configuration.d.ts", "node"]
   },
   "exclude": ["dist"]
 }

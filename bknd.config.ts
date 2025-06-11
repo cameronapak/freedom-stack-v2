@@ -1,11 +1,10 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
-import { registerLocalMediaAdapter } from "bknd/adapter/node";
-import { boolean, em, entity, number, text } from "bknd/data";
+import { em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";
 
 // since we're running in node, we can register the local media adapter
-const local = registerLocalMediaAdapter();
+// const local = registerLocalMediaAdapter();
 
 const schema = em(
   {
@@ -37,12 +36,6 @@ declare module "bknd/core" {
 }
 
 export default {
-  // we can use any libsql config, and if omitted, uses in-memory
-  app: (ctx: APIContext) => ({
-    connection: {
-      url: process.env.DB_URL ?? "file:.astro/content.db"
-    }
-  }),
   // an initial config is only applied if the database is empty
   initialConfig: {
     data: schema.toJSON(),
@@ -76,14 +69,14 @@ export default {
           is_default: true
         }
       }
-    },
-    // ... and media
-    media: {
-      enabled: true,
-      adapter: local({
-        path: "./public/temp/uploads"
-      })
     }
+    // ... and media
+    // media: {
+    //   enabled: true,
+    //   adapter: local({
+    //     path: "./public/temp/uploads"
+    //   })
+    // }
   },
   options: {
     // the seed option is only executed if the database was empty
