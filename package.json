@@ -17,11 +17,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.4",
     "@astrojs/netlify": "^6.3.4",
-    "@astrojs/react": "^4.3.0",
     "@imacrayon/alpine-ajax": "^0.12.2",
     "@tailwindcss/vite": "^4.1.8",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
     "alchemy": "^0.25.0",
     "alpinejs": "^3.14.9",
     "astro": "^5.8.1",
