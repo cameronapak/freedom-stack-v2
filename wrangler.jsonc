@@ -3,7 +3,7 @@
   "main": "dist/_worker.js",
   "compatibility_date": "2025-04-20",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": { "directory": "dist", "binding": "ASSETS" },
+  "assets": { "binding": "ASSETS", "directory": "dist" },
   "d1_databases": [
     {
       "binding": "DB",

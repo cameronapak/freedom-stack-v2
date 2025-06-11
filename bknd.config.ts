@@ -2,7 +2,6 @@ import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
 import { em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";
-import { d1 } from "bknd/adapter/cloudflare";
 
 // since we're running in node, we can register the local media adapter
 // const local = registerLocalMediaAdapter();
@@ -37,9 +36,6 @@ declare module "bknd/core" {
 }
 
 export default {
-  app: (ctx: APIContext) => ({
-    connection: d1({ binding: ctx.locals?.runtime?.env?.DB || "" })
-  }),
   // an initial config is only applied if the database is empty
   initialConfig: {
     data: schema.toJSON(),

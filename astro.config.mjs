@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@astrojs/react";
+import { bknd } from "./bknd/bknd.integration";
 import cloudflare from "@astrojs/cloudflare";
+import { AppEvents } from "bknd";
+import config from "./bknd.config.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +19,31 @@ export default defineConfig({
       }
     }
   },
-  integrations: [react()],
+  integrations: [
+    // config object is optional, just for demo purposes
+    bknd({
+      ...config,
+      onBuilt: async (app) => {
+        console.log("app built!");
+
+        // listen for requests
+        app.emgr.onEvent(
+          AppEvents.AppRequest,
+          (event) => {
+            const url = new URL(event.params.request.url);
+            console.log("request", url.pathname);
+          },
+          "sync"
+        );
+      },
+      adminOptions: {
+        ...config.adminOptions,
+        // this is the default, but just for demo purposes
+        // the path at where the admin panel will be available
+        adminBasepath: "/admin"
+      }
+    })
+  ],
   adapter: cloudflare({
     platformProxy: {
       enabled: true,
