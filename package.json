@@ -8,21 +8,17 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
-    "db:reset-local": "rm .astro/content.db"
+    "db:reset-local": "rm .astro/content.db",
+    "postinstall": "bknd copy-assets --out public/bknd --clean"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.3.4",
-    "@astrojs/react": "^4.3.0",
     "@imacrayon/alpine-ajax": "^0.12.2",
     "@tailwindcss/vite": "^4.1.8",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
     "alpinejs": "^3.14.9",
     "astro": "^5.8.1",
     "basecoat-css": "^0.1.2",
-    "bknd": "0.14.0-rc.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "bknd": "0.14.0",
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
