@@ -9,4 +9,13 @@ declare global {
   }
 }
 
-export {};
+interface ImportMetaEnv {
+  readonly DB_LIBSQL_URL: string;
+  readonly DB_LIBSQL_TOKEN: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+export { };

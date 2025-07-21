@@ -4,9 +4,8 @@ import { registerLocalMediaAdapter } from "bknd/adapter/node";
 import { em, entity, number, text } from "bknd/data";
 import { secureRandomString } from "bknd/utils";
 import { syncTypes } from "bknd/plugins";
-
-// since we're running in node, we can register the local media adapter
-const local = registerLocalMediaAdapter();
+import { libsql } from "bknd/data";
+import { createClient } from "@libsql/client";
 
 const schema = em(
   {
@@ -32,11 +31,14 @@ const schema = em(
 );
 
 export default {
-  // we can use any libsql config, and if omitted, uses in-memory
   app: (_ctx: APIContext) => ({
-    connection: {
-      url: process.env.DB_URL ?? "file:.astro/content.db"
-    }
+    connection: !!process.env.DB_LIBSQL_URL && !!process.env.DB_LIBSQL_TOKEN ?
+      libsql(createClient({
+        url: process.env.DB_LIBSQL_URL,
+        authToken: process.env.DB_LIBSQL_TOKEN
+      })) : {
+        url: "file:.astro/content.db"
+      }
   }),
   // an initial config is only applied if the database is empty
   initialConfig: {
@@ -76,9 +78,9 @@ export default {
     // ... and media
     media: {
       enabled: true,
-      adapter: local({
+      adapter: process.env.NODE_ENV === "development" ? registerLocalMediaAdapter()({
         path: "./public/temp/uploads"
-      })
+      }) : undefined,
     }
   },
   options: {
