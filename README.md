@@ -56,6 +56,8 @@ npx degit https://github.com/cameronapak/freedom-stack-v2 my-project
 
 ### Create User
 
+This may look funny, but running bknd this way makes it where bknd will use our `bknd.config.ts` file.
+
 ```bash
 npx tsx node_modules/.bin/bknd user create
 ```
