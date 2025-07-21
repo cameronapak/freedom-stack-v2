@@ -88,3 +88,10 @@ npm run dev
 2. Better Auth has been replaced with Bknd's built-in auth
 3. Instead of using daisyUI, we now use Basecoat (think `shadcn-ui` but without React)
 4. Instead of HTMX, we use Alpine Ajax (if you don't know what either one of these are... it's okay)
+
+## Amazing Alternatives
+
+Freedom Stack v2 not for you? Consider these amazing alternatives.
+
+- [basis](https://github.com/zhengyishen0/basis) - _"A foundation for modern web development built on fundamental tools and clear architectural boundaries. Powered by Astro, Alpine.js, and Supabase with 65+ pre-built components."_
+- [better-t-stack](https://github.com/AmanVarshney01/create-better-t-stack) - _"A modern CLI tool for scaffolding end-to-end type-safe TypeScript projects with best practices and customizable configurations"_
