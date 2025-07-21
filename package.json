@@ -19,7 +19,7 @@
     "alpinejs": "^3.14.9",
     "astro": "^5.8.1",
     "basecoat-css": "^0.1.2",
-    "bknd": "0.15.0-rc.4",
+    "bknd": "0.15.0",
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
