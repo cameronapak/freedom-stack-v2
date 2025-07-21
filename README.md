@@ -4,11 +4,6 @@
 > This project is still a work in progress. It's improving continuously and will be ready soon.
 > Documentation for using this project is currently limited but will be expanded shortly.
 
-## Tasks
-
-- [ ] Add `.cursorrules`
-- [ ] Can I add recommendations MCP's for each repo in `.vscode` folder?
-
 ## Criteria for Freedom Stack v2
 
 1. Must feel elementary/vanilla to use and be easy to learn
