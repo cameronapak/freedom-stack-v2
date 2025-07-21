@@ -1,0 +1,1155 @@
+---
+alwaysApply: false
+---
+
+# Basecoat - llms.txt
+
+Basecoat is a components library built with Tailwind CSS that works with any web stack. It brings the magic of shadcn/ui to any traditional web stack with no React required.
+
+## Links
+
+- Main documentation: https://basecoatui.com/
+- Introduction: https://basecoatui.com/introduction/
+- Installation guide: https://basecoatui.com/installation/
+- GitHub repository: https://github.com/hunvreus/basecoat
+- Kitchen Sink (all components): https://basecoatui.com/kitchen-sink/
+- NPM package: https://www.npmjs.com/package/basecoat-css
+
+## Overview
+
+Basecoat provides modern, accessible components with the simplicity of plain HTML and Tailwind. It is:
+
+- Lightweight: No runtime JS, just CSS and minimal vanilla JavaScript
+- Framework-agnostic: Works with any backend or frontend stack
+- Accessible: Components follow accessibility best practices
+- Dark mode ready: Respects your Tailwind config
+- Themable: Fully compatible with shadcn/ui themes
+- Free and open source: MIT licensed
+
+## Installation
+
+### CDN Installation
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/basecoat.cdn.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/all.min.js" defer></script>
+```
+
+### NPM Installation
+
+```bash
+npm install basecoat-css
+```
+
+```css
+@import "tailwindcss";
+@import "basecoat-css";
+```
+
+### Requirements
+
+- Tailwind CSS (required dependency)
+- No other dependencies for CSS-only components
+- JavaScript files required only for interactive components (dropdown-menu, popover, select, sidebar, tabs, toast)
+
+## Usage Rules
+
+- Add component classes directly to HTML elements (e.g., `btn`, `card`, `input`)
+- Combine with Tailwind utility classes for customization
+- Use semantic HTML elements as the foundation
+- JavaScript components require specific HTML structure and attributes
+- Components are designed to work without build tools
+
+## Configuration and Theming
+
+### Theme Compatibility
+
+Basecoat is fully compatible with shadcn/ui themes. Import any shadcn/ui theme:
+
+```css global.css
+@import "tailwindcss";
+@import "basecoat-css";
+@import "./theme.css"; /* shadcn/ui theme variables */
+```
+
+### Customization
+
+- Override styles using Tailwind utility classes
+- Use CSS variables for deeper customization
+- Copy basecoat.css file for extensive modifications
+- Extend or override styles in custom CSS files
+
+## Components Reference
+
+### Accordion
+
+**Classes:** `accordion`
+**Structure:** Uses `<details>` and `<summary>` elements with `accordion` wrapper class
+**JavaScript:** Optional (included for single-panel behavior)
+**Usage:**
+
+```html
+<section class="accordion">
+  <details class="group border-b">
+    <summary>
+      <h2>Question Title</h2>
+    </summary>
+    <section class="pb-4">Answer content</section>
+  </details>
+</section>
+```
+
+### Alert
+
+**Classes:** `alert`, `alert-destructive`
+**Structure:** Container with optional icon, heading, and description
+**Usage:**
+
+```html
+<div class="alert">
+  <svg>...</svg>
+  <h2>Alert Title</h2>
+  <section>Alert description</section>
+</div>
+```
+
+### Alert Dialog
+
+**Classes:** `dialog`
+**Structure:** Uses native `<dialog>` element
+**JavaScript:** Uses native browser APIs
+**Usage:**
+
+```html
+<dialog id="alert-dialog" class="dialog">
+  <article>
+    <header>
+      <h2>Title</h2>
+      <p>Description</p>
+    </header>
+    <footer>
+      <button class="btn-outline">Cancel</button>
+      <button class="btn-primary">Continue</button>
+    </footer>
+  </article>
+</dialog>
+```
+
+### Avatar
+
+**Implementation:** No dedicated class - use Tailwind utilities
+**Usage:**
+
+```html
+<img class="size-8 shrink-0 rounded-full object-cover" alt="User" src="avatar.png" />
+```
+
+### Badge
+
+**Classes:** `badge`
+**Variants:** Default styling, combine with Tailwind utilities for colors and sizes
+**Usage:**
+
+```html
+<span class="badge">New</span>
+```
+
+### Breadcrumb
+
+**Implementation:** No dedicated class - use Tailwind utilities with optional dropdown-menu
+**Usage:**
+
+```html
+<ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm">
+  <li><a href="#" class="hover:text-foreground">Home</a></li>
+  <li><svg>chevron</svg></li>
+  <li><span class="text-foreground">Current Page</span></li>
+</ol>
+```
+
+### Button
+
+**Classes:** `btn`, `btn-primary`, `btn-secondary`, `btn-destructive`, `btn-outline`, `btn-ghost`, `btn-link`, `btn-icon`
+**Sizes:** `btn-sm`, `btn-lg` (can combine: `btn-lg-destructive`, `btn-sm-icon-outline`)
+**Usage:**
+
+```html
+<button class="btn-primary">Primary Button</button>
+<button class="btn-sm-outline">Small Outline Button</button>
+<button class="btn-icon"><svg>icon</svg></button>
+```
+
+### Card
+
+**Classes:** `card`
+**Structure:** Container with optional header, content, and footer
+**Usage:**
+
+```html
+<div class="card">
+  <header>
+    <h3>Card Title</h3>
+    <p>Card description</p>
+  </header>
+  <section>Card content</section>
+  <footer>Card footer</footer>
+</div>
+```
+
+### Checkbox
+
+**Classes:** Standard HTML checkbox with Basecoat styling
+**Usage:**
+
+```html
+<input type="checkbox" id="checkbox" /> <label for="checkbox">Checkbox label</label>
+```
+
+### Dialog
+
+**Classes:** `dialog`
+**JavaScript:** Required for functionality
+**Structure:** Native `<dialog>` element with specific markup
+**Usage:**
+
+```html
+<dialog class="dialog" id="dialog">
+  <article onclick="event.stopPropagation()">
+    <header>
+      <h2>Dialog Title</h2>
+      <button onclick="document.getElementById('dialog').close()">×</button>
+    </header>
+    <section>Dialog content</section>
+    <footer>Dialog actions</footer>
+  </article>
+</dialog>
+```
+
+### Dropdown Menu
+
+**Classes:** `dropdown-menu`
+**JavaScript:** Required - include dropdown-menu.min.js
+**Structure:** Trigger button + popover with menu items
+**Usage:**
+
+```html
+<div class="dropdown-menu">
+  <button id="trigger" aria-haspopup="menu" class="btn">Open</button>
+  <div data-popover aria-hidden="true">
+    <div role="menu">
+      <div role="menuitem">Menu Item</div>
+      <hr role="separator" />
+      <div role="menuitemcheckbox" aria-checked="false">Checkbox Item</div>
+    </div>
+  </div>
+</div>
+```
+
+### Form
+
+**Classes:** `form`, `form-field`
+**Structure:** Form container with field groupings
+**Usage:**
+
+```html
+<form class="form">
+  <div class="form-field">
+    <label>Label</label>
+    <input class="input" />
+    <p class="text-muted-foreground text-sm">Help text</p>
+  </div>
+</form>
+```
+
+### Input
+
+**Classes:** `input`
+**Types:** Works with all HTML input types
+**States:** Standard HTML states (disabled, required, etc.)
+**Usage:**
+
+```html
+<input type="text" class="input" placeholder="Enter text" /> <input type="email" class="input" disabled />
+```
+
+### Label
+
+**Classes:** `label`
+**Usage:**
+
+```html
+<label for="input" class="label">Label Text</label> <input id="input" class="input" />
+```
+
+### Pagination
+
+**Implementation:** Uses navigation and button classes
+**Usage:**
+
+```html
+<nav class="flex items-center space-x-2">
+  <button class="btn-outline btn-sm">Previous</button>
+  <button class="btn-outline btn-sm">1</button>
+  <button class="btn btn-sm">2</button>
+  <button class="btn-outline btn-sm">Next</button>
+</nav>
+```
+
+### Popover
+
+**Classes:** `popover`
+**JavaScript:** Required - include popover.min.js
+**Structure:** Trigger + popover content
+**Positioning:** Use data-side and data-align attributes
+**Usage:**
+
+```html
+<button popovertarget="popover">Trigger</button>
+
+<div popover class="popover" id="popover">Popover content</div>
+```
+
+### Radio Group
+
+**Implementation:** Standard HTML radio inputs with consistent styling
+**Usage:**
+
+```html
+<div role="radiogroup">
+  <input type="radio" name="group" id="option1" />
+  <label for="option1">Option 1</label>
+  <input type="radio" name="group" id="option2" />
+  <label for="option2">Option 2</label>
+</div>
+```
+
+### Select
+
+**Classes:** `select`
+**JavaScript:** Required - include select.min.js
+**Structure:** Custom select implementation with proper ARIA
+**Usage:**
+
+```html
+<div class="select">
+  <button role="combobox" aria-expanded="false">Select option</button>
+  <div role="listbox">
+    <div role="option" data-value="1">Option 1</div>
+    <div role="option" data-value="2">Option 2</div>
+  </div>
+</div>
+```
+
+### Skeleton
+
+**Classes:** `skeleton`
+**Usage:**
+
+```html
+<div class="skeleton h-4 w-full"></div>
+<div class="skeleton h-4 w-3/4"></div>
+```
+
+### Slider
+
+**Implementation:** Uses HTML range input with custom styling
+**Usage:**
+
+```html
+<input type="range" class="slider" min="0" max="100" value="50" />
+```
+
+### Switch
+
+**Classes:** `switch`
+**Implementation:** Styled checkbox that appears as toggle
+**Usage:**
+
+```html
+<label class="switch">
+  <input type="checkbox" />
+  <span>Toggle label</span>
+</label>
+```
+
+### Table
+
+**Classes:** `table`
+**Structure:** Standard HTML table elements
+**Usage:**
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Tabs
+
+**Classes:** `tabs`
+**JavaScript:** Required - include tabs.min.js
+**Structure:** Tab list + tab panels with proper ARIA
+**Usage:**
+
+```html
+<div class="tabs" id="tabs">
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Tab 1</button>
+    <button role="tab" aria-selected="false">Tab 2</button>
+  </div>
+  <div role="tabpanel" aria-selected="true">Panel 1</div>
+  <div role="tabpanel" aria-selected="false" hidden>Panel 2</div>
+</div>
+```
+
+### Textarea
+
+**Classes:** `textarea`
+**Usage:**
+
+```html
+<textarea class="textarea" placeholder="Enter text"></textarea>
+```
+
+### Toast
+
+**Classes:** `toast`
+**JavaScript:** Required - include toast.min.js
+**Structure:** Toast container with content
+**Usage:**
+
+```html
+<div class="toast" role="alert">
+  <div class="toast-header">
+    <strong>Toast Title</strong>
+    <button class="toast-close">×</button>
+  </div>
+  <div class="toast-body">Toast message</div>
+</div>
+```
+
+### Tooltip
+
+**Classes:** `tooltip`
+**Implementation:** Uses data attributes for content
+**Usage:**
+
+```html
+<button data-tooltip="Tooltip text">Hover me</button>
+```
+
+## JavaScript Components
+
+Six components require JavaScript:
+
+1. **Dropdown Menu** - Interactive dropdown with keyboard navigation
+2. **Popover** - Positioned popover with click outside to close
+3. **Select** - Custom select with search and keyboard navigation
+4. **Sidebar** - Collapsible sidebar component
+5. **Tabs** - Tab switching with keyboard navigation
+6. **Toast** - Show/hide toast notifications
+
+### JavaScript Events
+
+- `basecoat:initialized` - Dispatched when component is ready
+- `basecoat:popover` - Dispatched when popover opens (closes other popovers)
+
+### JavaScript Loading Options
+
+**CDN All Components:**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/all.min.js" defer></script>
+```
+
+**CDN Individual Component:**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/tabs.min.js" defer></script>
+```
+
+**ES Modules:**
+
+```javascript
+import "basecoat-css/all";
+// or
+import "basecoat-css/tabs";
+import "basecoat-css/popover";
+```
+
+## Accessibility
+
+All components follow WAI-ARIA design patterns:
+
+- Proper ARIA roles, states, and properties
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- Semantic HTML foundation
+
+## Responsive Design
+
+- Components work with Tailwind's responsive prefixes
+- Mobile-first approach
+- Flexible grid system compatibility
+- Touch-friendly interactive elements
+
+## Browser Compatibility
+
+- Modern browsers with CSS Grid and Flexbox support
+- Uses native HTML5 elements (dialog, details/summary)
+- Progressive enhancement approach
+- Fallback behaviors for older browsers
+
+## Best Practices
+
+1. **HTML Structure:** Use semantic HTML elements as foundation
+2. **Customization:** Prefer Tailwind utilities over custom CSS
+3. **Accessibility:** Always include proper labels and ARIA attributes
+4. **Performance:** Load only JavaScript for components you use
+5. **Theming:** Use CSS custom properties for consistent theming
+6. **Testing:** Test with keyboard navigation and screen readers
+
+## Migration from shadcn/ui
+
+Basecoat components map directly to shadcn/ui equivalents:
+
+- Same design tokens and theme structure
+- Similar class naming patterns
+- Compatible theme files
+- Equivalent accessibility features
+
+Simply replace React components with HTML equivalents using Basecoat classes.
+
+## Common Patterns
+
+### Form with Validation
+
+```html
+<form class="form space-y-4">
+  <div class="form-field">
+    <label for="email" class="label">Email</label>
+    <input id="email" type="email" class="input" required />
+    <p class="text-destructive text-sm">Please enter a valid email</p>
+  </div>
+  <button type="submit" class="btn-primary">Submit</button>
+</form>
+```
+
+### Card with Actions
+
+```html
+<div class="card">
+  <header>
+    <h3 class="text-lg font-semibold">Card Title</h3>
+    <p class="text-muted-foreground">Card description</p>
+  </header>
+  <section class="py-4">Card content goes here</section>
+  <footer class="flex gap-2">
+    <button class="btn-outline">Cancel</button>
+    <button class="btn-primary">Save</button>
+  </footer>
+</div>
+```
+
+### Navigation with Dropdown
+
+```html
+<nav class="flex items-center space-x-4">
+  <a href="#" class="btn-ghost">Home</a>
+  <div class="dropdown-menu">
+    <button class="btn-ghost">Products</button>
+    <div data-popover>
+      <div role="menu">
+        <div role="menuitem">Product 1</div>
+        <div role="menuitem">Product 2</div>
+      </div>
+    </div>
+  </div>
+</nav>
+```
+
+# Basecoat - llms.txt
+
+Basecoat is a components library built with Tailwind CSS that works with any web stack. It brings the magic of shadcn/ui to any traditional web stack with no React required.
+
+## Links
+
+- Main documentation: https://basecoatui.com/
+- Introduction: https://basecoatui.com/introduction/
+- Installation guide: https://basecoatui.com/installation/
+- GitHub repository: https://github.com/hunvreus/basecoat
+- Kitchen Sink (all components): https://basecoatui.com/kitchen-sink/
+- NPM package: https://www.npmjs.com/package/basecoat-css
+
+## Overview
+
+Basecoat provides modern, accessible components with the simplicity of plain HTML and Tailwind. It is:
+
+- Lightweight: No runtime JS, just CSS and minimal vanilla JavaScript
+- Framework-agnostic: Works with any backend or frontend stack
+- Accessible: Components follow accessibility best practices
+- Dark mode ready: Respects your Tailwind config
+- Themable: Fully compatible with shadcn/ui themes
+- Free and open source: MIT licensed
+
+## Installation
+
+### CDN Installation
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/basecoat.cdn.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/all.min.js" defer></script>
+```
+
+### NPM Installation
+
+```bash
+npm install basecoat-css
+```
+
+```css
+@import "tailwindcss";
+@import "basecoat-css";
+```
+
+### Requirements
+
+- Tailwind CSS (required dependency)
+- No other dependencies for CSS-only components
+- JavaScript files required only for interactive components (dropdown-menu, popover, select, sidebar, tabs, toast)
+
+## Usage Rules
+
+- Add component classes directly to HTML elements (e.g., `btn`, `card`, `input`)
+- Combine with Tailwind utility classes for customization
+- Use semantic HTML elements as the foundation
+- JavaScript components require specific HTML structure and attributes
+- Components are designed to work without build tools
+
+## Configuration and Theming
+
+### Theme Compatibility
+
+Basecoat is fully compatible with shadcn/ui themes. Import any shadcn/ui theme:
+
+```css global.css
+@import "tailwindcss";
+@import "basecoat-css";
+@import "./theme.css"; /* shadcn/ui theme variables */
+```
+
+### Customization
+
+- Override styles using Tailwind utility classes
+- Use CSS variables for deeper customization
+- Copy basecoat.css file for extensive modifications
+- Extend or override styles in custom CSS files
+
+## Components Reference
+
+### Accordion
+
+**Classes:** `accordion`
+**Structure:** Uses `<details>` and `<summary>` elements with `accordion` wrapper class
+**JavaScript:** Optional (included for single-panel behavior)
+**Usage:**
+
+```html
+<section class="accordion">
+  <details class="group border-b">
+    <summary>
+      <h2>Question Title</h2>
+    </summary>
+    <section class="pb-4">Answer content</section>
+  </details>
+</section>
+```
+
+### Alert
+
+**Classes:** `alert`, `alert-destructive`
+**Structure:** Container with optional icon, heading, and description
+**Usage:**
+
+```html
+<div class="alert">
+  <svg>...</svg>
+  <h2>Alert Title</h2>
+  <section>Alert description</section>
+</div>
+```
+
+### Alert Dialog
+
+**Classes:** `dialog`
+**Structure:** Uses native `<dialog>` element
+**JavaScript:** Uses native browser APIs
+**Usage:**
+
+```html
+<dialog id="alert-dialog" class="dialog">
+  <article>
+    <header>
+      <h2>Title</h2>
+      <p>Description</p>
+    </header>
+    <footer>
+      <button class="btn-outline">Cancel</button>
+      <button class="btn-primary">Continue</button>
+    </footer>
+  </article>
+</dialog>
+```
+
+### Avatar
+
+**Implementation:** No dedicated class - use Tailwind utilities
+**Usage:**
+
+```html
+<img class="size-8 shrink-0 rounded-full object-cover" alt="User" src="avatar.png" />
+```
+
+### Badge
+
+**Classes:** `badge`
+**Variants:** Default styling, combine with Tailwind utilities for colors and sizes
+**Usage:**
+
+```html
+<span class="badge">New</span>
+```
+
+### Breadcrumb
+
+**Implementation:** No dedicated class - use Tailwind utilities with optional dropdown-menu
+**Usage:**
+
+```html
+<ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm">
+  <li><a href="#" class="hover:text-foreground">Home</a></li>
+  <li><svg>chevron</svg></li>
+  <li><span class="text-foreground">Current Page</span></li>
+</ol>
+```
+
+### Button
+
+**Classes:** `btn`, `btn-primary`, `btn-secondary`, `btn-destructive`, `btn-outline`, `btn-ghost`, `btn-link`, `btn-icon`
+**Sizes:** `btn-sm`, `btn-lg` (can combine: `btn-lg-destructive`, `btn-sm-icon-outline`)
+**Usage:**
+
+```html
+<button class="btn-primary">Primary Button</button>
+<button class="btn-sm-outline">Small Outline Button</button>
+<button class="btn-icon"><svg>icon</svg></button>
+```
+
+### Card
+
+**Classes:** `card`
+**Structure:** Container with optional header, content, and footer
+**Usage:**
+
+```html
+<div class="card">
+  <header>
+    <h3>Card Title</h3>
+    <p>Card description</p>
+  </header>
+  <section>Card content</section>
+  <footer>Card footer</footer>
+</div>
+```
+
+### Checkbox
+
+**Classes:** Standard HTML checkbox with Basecoat styling
+**Usage:**
+
+```html
+<input type="checkbox" id="checkbox" /> <label for="checkbox">Checkbox label</label>
+```
+
+### Dialog
+
+**Classes:** `dialog`
+**JavaScript:** Required for functionality
+**Structure:** Native `<dialog>` element with specific markup
+**Usage:**
+
+```html
+<dialog class="dialog" id="dialog">
+  <article onclick="event.stopPropagation()">
+    <header>
+      <h2>Dialog Title</h2>
+      <button onclick="document.getElementById('dialog').close()">×</button>
+    </header>
+    <section>Dialog content</section>
+    <footer>Dialog actions</footer>
+  </article>
+</dialog>
+```
+
+### Dropdown Menu
+
+**Classes:** `dropdown-menu`
+**JavaScript:** Required - include dropdown-menu.min.js
+**Structure:** Trigger button + popover with menu items
+**Usage:**
+
+```html
+<div class="dropdown-menu">
+  <button id="trigger" aria-haspopup="menu" class="btn">Open</button>
+  <div data-popover aria-hidden="true">
+    <div role="menu">
+      <div role="menuitem">Menu Item</div>
+      <hr role="separator" />
+      <div role="menuitemcheckbox" aria-checked="false">Checkbox Item</div>
+    </div>
+  </div>
+</div>
+```
+
+### Form
+
+**Classes:** `form`, `form-field`
+**Structure:** Form container with field groupings
+**Usage:**
+
+```html
+<form class="form">
+  <div class="form-field">
+    <label>Label</label>
+    <input class="input" />
+    <p class="text-muted-foreground text-sm">Help text</p>
+  </div>
+</form>
+```
+
+### Input
+
+**Classes:** `input`
+**Types:** Works with all HTML input types
+**States:** Standard HTML states (disabled, required, etc.)
+**Usage:**
+
+```html
+<input type="text" class="input" placeholder="Enter text" /> <input type="email" class="input" disabled />
+```
+
+### Label
+
+**Classes:** `label`
+**Usage:**
+
+```html
+<label for="input" class="label">Label Text</label> <input id="input" class="input" />
+```
+
+### Pagination
+
+**Implementation:** Uses navigation and button classes
+**Usage:**
+
+```html
+<nav class="flex items-center space-x-2">
+  <button class="btn-outline btn-sm">Previous</button>
+  <button class="btn-outline btn-sm">1</button>
+  <button class="btn btn-sm">2</button>
+  <button class="btn-outline btn-sm">Next</button>
+</nav>
+```
+
+### Popover
+
+**Classes:** `popover`
+**JavaScript:** Required - include popover.min.js
+**Structure:** Trigger + popover content
+**Positioning:** Use data-side and data-align attributes
+**Usage:**
+
+```html
+<button popovertarget="popover">Trigger</button>
+
+<div popover class="popover" id="popover">Popover content</div>
+```
+
+### Radio Group
+
+**Implementation:** Standard HTML radio inputs with consistent styling
+**Usage:**
+
+```html
+<div role="radiogroup">
+  <input type="radio" name="group" id="option1" />
+  <label for="option1">Option 1</label>
+  <input type="radio" name="group" id="option2" />
+  <label for="option2">Option 2</label>
+</div>
+```
+
+### Select
+
+**Classes:** `select`
+**JavaScript:** Required - include select.min.js
+**Structure:** Custom select implementation with proper ARIA
+**Usage:**
+
+```html
+<div class="select">
+  <button role="combobox" aria-expanded="false">Select option</button>
+  <div role="listbox">
+    <div role="option" data-value="1">Option 1</div>
+    <div role="option" data-value="2">Option 2</div>
+  </div>
+</div>
+```
+
+### Skeleton
+
+**Classes:** `skeleton`
+**Usage:**
+
+```html
+<div class="skeleton h-4 w-full"></div>
+<div class="skeleton h-4 w-3/4"></div>
+```
+
+### Slider
+
+**Implementation:** Uses HTML range input with custom styling
+**Usage:**
+
+```html
+<input type="range" class="slider" min="0" max="100" value="50" />
+```
+
+### Switch
+
+**Classes:** `switch`
+**Implementation:** Styled checkbox that appears as toggle
+**Usage:**
+
+```html
+<label class="switch">
+  <input type="checkbox" />
+  <span>Toggle label</span>
+</label>
+```
+
+### Table
+
+**Classes:** `table`
+**Structure:** Standard HTML table elements
+**Usage:**
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Tabs
+
+**Classes:** `tabs`
+**JavaScript:** Required - include tabs.min.js
+**Structure:** Tab list + tab panels with proper ARIA
+**Usage:**
+
+```html
+<div class="tabs" id="tabs">
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Tab 1</button>
+    <button role="tab" aria-selected="false">Tab 2</button>
+  </div>
+  <div role="tabpanel" aria-selected="true">Panel 1</div>
+  <div role="tabpanel" aria-selected="false" hidden>Panel 2</div>
+</div>
+```
+
+### Textarea
+
+**Classes:** `textarea`
+**Usage:**
+
+```html
+<textarea class="textarea" placeholder="Enter text"></textarea>
+```
+
+### Toast
+
+**Classes:** `toast`
+**JavaScript:** Required - include toast.min.js
+**Structure:** Toast container with content
+**Usage:**
+
+```html
+<div class="toast" role="alert">
+  <div class="toast-header">
+    <strong>Toast Title</strong>
+    <button class="toast-close">×</button>
+  </div>
+  <div class="toast-body">Toast message</div>
+</div>
+```
+
+### Tooltip
+
+**Classes:** `tooltip`
+**Implementation:** Uses data attributes for content
+**Usage:**
+
+```html
+<button data-tooltip="Tooltip text">Hover me</button>
+```
+
+## JavaScript Components
+
+Six components require JavaScript:
+
+1. **Dropdown Menu** - Interactive dropdown with keyboard navigation
+2. **Popover** - Positioned popover with click outside to close
+3. **Select** - Custom select with search and keyboard navigation
+4. **Sidebar** - Collapsible sidebar component
+5. **Tabs** - Tab switching with keyboard navigation
+6. **Toast** - Show/hide toast notifications
+
+### JavaScript Events
+
+- `basecoat:initialized` - Dispatched when component is ready
+- `basecoat:popover` - Dispatched when popover opens (closes other popovers)
+
+### JavaScript Loading Options
+
+**CDN All Components:**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/all.min.js" defer></script>
+```
+
+**CDN Individual Component:**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.2.8/dist/js/tabs.min.js" defer></script>
+```
+
+**ES Modules:**
+
+```javascript
+import "basecoat-css/all";
+// or
+import "basecoat-css/tabs";
+import "basecoat-css/popover";
+```
+
+## Accessibility
+
+All components follow WAI-ARIA design patterns:
+
+- Proper ARIA roles, states, and properties
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- Semantic HTML foundation
+
+## Responsive Design
+
+- Components work with Tailwind's responsive prefixes
+- Mobile-first approach
+- Flexible grid system compatibility
+- Touch-friendly interactive elements
+
+## Browser Compatibility
+
+- Modern browsers with CSS Grid and Flexbox support
+- Uses native HTML5 elements (dialog, details/summary)
+- Progressive enhancement approach
+- Fallback behaviors for older browsers
+
+## Best Practices
+
+1. **HTML Structure:** Use semantic HTML elements as foundation
+2. **Customization:** Prefer Tailwind utilities over custom CSS
+3. **Accessibility:** Always include proper labels and ARIA attributes
+4. **Performance:** Load only JavaScript for components you use
+5. **Theming:** Use CSS custom properties for consistent theming
+6. **Testing:** Test with keyboard navigation and screen readers
+
+## Migration from shadcn/ui
+
+Basecoat components map directly to shadcn/ui equivalents:
+
+- Same design tokens and theme structure
+- Similar class naming patterns
+- Compatible theme files
+- Equivalent accessibility features
+
+Simply replace React components with HTML equivalents using Basecoat classes.
+
+## Common Patterns
+
+### Form with Validation
+
+```html
+<form class="form space-y-4">
+  <div class="form-field">
+    <label for="email" class="label">Email</label>
+    <input id="email" type="email" class="input" required />
+    <p class="text-destructive text-sm">Please enter a valid email</p>
+  </div>
+  <button type="submit" class="btn-primary">Submit</button>
+</form>
+```
+
+### Card with Actions
+
+```html
+<div class="card">
+  <header>
+    <h3 class="text-lg font-semibold">Card Title</h3>
+    <p class="text-muted-foreground">Card description</p>
+  </header>
+  <section class="py-4">Card content goes here</section>
+  <footer class="flex gap-2">
+    <button class="btn-outline">Cancel</button>
+    <button class="btn-primary">Save</button>
+  </footer>
+</div>
+```
+
+### Navigation with Dropdown
+
+```html
+<nav class="flex items-center space-x-4">
+  <a href="#" class="btn-ghost">Home</a>
+  <div class="dropdown-menu">
+    <button class="btn-ghost">Products</button>
+    <div data-popover>
+      <div role="menu">
+        <div role="menuitem">Product 1</div>
+        <div role="menuitem">Product 2</div>
+      </div>
+    </div>
+  </div>
+</nav>
+```
