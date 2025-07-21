@@ -32,15 +32,11 @@ In the Cursor chat window you can type `@basecoat-ui.mdc` and get AI assistance 
 
 > _"Experience the power of a lightweight, feature-rich backend that seamlessly integrates into your framework of choice."_
 
-Imagine having your own Supabase-like backend, but you could host it anywhere you'd like? That's Bknd.
+Imagine having your own Supabase-like backend with auth, user management, media management, database management, etc., but you could host it anywhere you'd like? That's Bknd.
 
 Since Bknd integrates into your framework of choice, it ships with Freedom Stack out of the box!
 
 Here's the best explanation for the heart of [Bknd](https://docs.bknd.io/motivation) and why it's perfect for Freedom Stack.
-
-### Remaining Bknd things
-
-1. **issue (blocking)**: Given I am signed in as an admin, `/data/entity/users` page throws a 404 for some reason when trying to view list of users.
 
 ### Database
 
