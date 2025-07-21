@@ -41,23 +41,13 @@ if (!post) {
 }
 ---
 
-<Layout title={post.title || "Post"}>
-  <article class="mx-auto max-w-4xl p-6">
-    <header class="mb-8">
-      <h1 class="heading-1 mb-4">{post.title}</h1>
-      {post.createdAt && (
-        <time class="text-muted-foreground">
-          {new Date(post.createdAt).toLocaleDateString()}
-        </time>
-      )}
-    </header>
-    
-    <main class="prose prose-lg max-w-none">
-      {post.content ? (
-        <div set:html={post.content} />
-      ) : (
-        <p>No content available for this post.</p>
-      )}
-    </main>
+<Layout title={post.title}>
+  <article class="prose mx-auto max-w-2xl">
+    <h1 class="heading-1 mb-4">{post.title}</h1>
+    <p class="text-sm text-muted-foreground mb-8">Views: {post.views ?? 0}</p>
+    <section innerHTML={post.content ?? ""}/>
+    <nav class="mt-12">
+      <a href="/" class="btn-outline">← Back to posts</a>
+    </nav>
   </article>
 </Layout>
