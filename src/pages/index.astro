@@ -12,6 +12,9 @@ const user = api.getUser();
   <section class="mx-auto flex max-w-md flex-col gap-4 p-6">
     <h1 class="heading-1">Freedom Stack v2</h1>
     {user?.email ? <p>Logged in as {user.email}</p> : <p>Not logged in</p>}
+    <div class="bg-secondary rounded-lg p-3 font-mono select-all">
+      npx degit https://github.com/cameronapak/freedom-stack-v2 my-project
+    </div>
     <h2 class="heading-2">Posts</h2>
     <div class="grid grid-cols-1 gap-4">
       {
