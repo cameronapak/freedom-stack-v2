@@ -100,8 +100,11 @@ export default {
 
       // create some entries
       await ctx.em.mutator("posts").insertMany([
-        { title: "First post", slug: "first-post", content: "..." },
-        { title: "Second post", slug: "second-post" }
+        {
+          title: "What is Freedom Stack v2?",
+          slug: "freedom-stack-v2",
+          content: "Freedom Stack v2 is a modern web development stack designed to be elementary, financially accessible, and entirely self-hostable. It's built for developers who want a simple yet powerful foundation for building web applications with AI code editor assistance."
+        }
       ]);
     },
     plugins: [
