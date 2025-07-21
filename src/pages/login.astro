@@ -4,13 +4,23 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout title="Login">
   <section x-data="login" class="mx-auto flex max-w-md flex-col gap-4 p-6">
-    <div class="alert bg-secondary">
-      <section>
-        <p>Email: <code>admin@example.com</code></p>
-        <p>Password: <code>password</code></p>
-        <button @click="pasteAdminCredentials" class="btn-outline w-fit">Login as Admin</button>
-      </section>
-    </div>
+    {
+      import.meta.env.DEV ? (
+        <div class="alert bg-secondary">
+          <section>
+            <p>
+              Email: <code>admin@example.com</code>
+            </p>
+            <p>
+              Password: <code>password</code>
+            </p>
+            <button @click="pasteAdminCredentials" class="btn-outline w-fit">
+              Login as Admin
+            </button>
+          </section>
+        </div>
+      ) : null
+    }
     <div class="card w-full">
       <header>
         <h2>Login to your account</h2>
