@@ -9,11 +9,11 @@
   }
 
   .heading-2 {
-    @apply mt-10 scroll-m-20 border-b pb-2 text-2xl font-medium tracking-tight transition-colors first:mt-0;
+    @apply scroll-m-20 border-b pb-2 text-2xl font-medium tracking-tight transition-colors first:mt-0;
   }
 
   .heading-3 {
-    @apply mt-8 scroll-m-20 text-xl font-medium tracking-tight;
+    @apply scroll-m-20 text-xl font-medium tracking-tight;
   }
 
   .paragraph {
