@@ -1,1 +1,0 @@
-./.cursor/rules/basecoat-ui.mdc
