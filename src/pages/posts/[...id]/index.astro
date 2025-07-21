@@ -1,0 +1,63 @@
+---
+import { getApi } from "@/bknd.ts";
+import Layout from "@/layouts/Layout.astro";
+
+// Export static paths as empty array to make this fully dynamic (SSR)
+export function getStaticPaths() {
+  return [];
+}
+
+// Get the API instance
+const api = await getApi(Astro.request.headers, { verify: false, mode: "dynamic" });
+
+// Normalize the id parameter to a single string
+const identifier = Array.isArray(Astro.params.id) ? Astro.params.id.at(-1) : Astro.params.id;
+
+// If no identifier is provided, redirect to 404
+if (!identifier) {
+  return Astro.redirect("/404", 302);
+}
+
+// First, try to fetch the post by slug
+let post;
+try {
+  post = await api.data.readOne("posts", { filter: { slug: identifier } });
+} catch (error) {
+  console.log("Error fetching by slug:", error);
+}
+
+// If no post found by slug, try fetching by id
+if (!post) {
+  try {
+    post = await api.data.readOne("posts", identifier);
+  } catch (error) {
+    console.log("Error fetching by id:", error);
+  }
+}
+
+// If still no post found, redirect to 404
+if (!post) {
+  return Astro.redirect("/404", 302);
+}
+---
+
+<Layout title={post.title || "Post"}>
+  <article class="mx-auto max-w-4xl p-6">
+    <header class="mb-8">
+      <h1 class="heading-1 mb-4">{post.title}</h1>
+      {post.createdAt && (
+        <time class="text-muted-foreground">
+          {new Date(post.createdAt).toLocaleDateString()}
+        </time>
+      )}
+    </header>
+    
+    <main class="prose prose-lg max-w-none">
+      {post.content ? (
+        <div set:html={post.content} />
+      ) : (
+        <p>No content available for this post.</p>
+      )}
+    </main>
+  </article>
+</Layout>
