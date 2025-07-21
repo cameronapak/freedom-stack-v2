@@ -47,10 +47,15 @@ if (!post) {
   console.error(`[POST_LOOKUP] Post not found for identifier '${slug}' - redirecting to 404`);
   return Astro.redirect("/404", 302);
 }
+
+// Increment the views count
+await api.data.updateOne("posts", post.id, {
+  views: (post.views ?? 0) + 1
+});
 ---
 
 <Layout title={post.title}>
-  <article class="prose mx-auto max-w-2xl">
+  <article class="prose mx-auto max-w-sm py-12">
     <h1 class="heading-1 mb-4">{post.title}</h1>
     <p class="text-muted-foreground mb-8 text-sm">Views: {post.views ?? 0}</p>
     <section set:html={post.content ?? ""} />
