@@ -1,0 +1,74 @@
+---
+description: Freedom Stack v2 Structure
+alwaysApply: true
+---
+
+# Project Structure
+
+## Root Directory
+
+- `astro.config.mjs` - Astro configuration with Netlify adapter and Tailwind
+- `bknd.config.ts` - Backend configuration, database schema, auth, and seeding
+- `package.json` - Dependencies and npm scripts
+- `tsconfig.json` - TypeScript config with `@/*` path alias for `src/*`
+- `.prettierrc` - Code formatting configuration
+
+## Source Structure (`src/`)
+
+```
+src/
+├── assets/          # Static assets (SVG icons, images)
+├── components/      # Reusable Astro components
+├── layouts/         # Page layout templates
+├── pages/           # File-based routing (Astro pages)
+├── styles/          # Global CSS and Tailwind imports
+├── bknd.ts          # Bknd API helper functions
+├── bknd-types.d.ts  # Auto-generated database types
+├── middleware.ts    # Astro middleware for API routing
+└── env.d.ts         # Environment type definitions
+```
+
+## Key Directories
+
+### `/src/pages/` - File-based Routing
+
+- `index.astro` - Homepage
+- `login.astro` - Authentication login page
+- `register.astro` - User registration page
+- `logout.astro` - Logout handler
+- `404.astro` - Error page
+
+### `/src/components/` - Reusable Components
+
+- `Header.astro` - Site navigation header
+- `Authenticated.astro` - Conditional rendering based on auth state
+
+### `/src/styles/` - Styling
+
+- `global.css` - Global styles with Tailwind imports and custom component classes
+
+## Generated/Build Directories
+
+- `.astro/` - Astro build cache and generated types
+- `dist/` - Production build output
+- `public/` - Static assets served directly
+- `public/bknd/` - Bknd admin panel assets (auto-generated)
+
+## Path Aliases
+
+- `@/*` maps to `src/*` (configured in tsconfig.json)
+- Use `@/components/Header.astro` instead of `../components/Header.astro`
+
+## File Naming Conventions
+
+- Astro components: PascalCase (e.g., `Header.astro`)
+- Pages: lowercase (e.g., `login.astro`)
+- TypeScript files: camelCase (e.g., `middleware.ts`)
+- CSS files: lowercase (e.g., `global.css`)
+
+## Component Patterns
+
+- Use Astro components for static/server-rendered content
+- Use Alpine.js for client-side interactivity
+- Leverage Basecoat UI classes for consistent styling
+- Follow the authentication pattern in `Authenticated.astro` for conditional rendering
