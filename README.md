@@ -20,6 +20,12 @@
 - [Bknd](https://bknd.io)
 - [Netlify](https://www.netlify.com), or host anywhere
 
+## Basecoat UI
+
+_"All of the shadcn/ui magic, none of the React. A components library built with Tailwind CSS that works with any web stack. [basecoatui.com](https://basecoatui.com/)"_
+
+[Basecoat is easy to theme.](https://basecoatui.com/installation/#install-theming)
+
 ## Bknd
 
 > _"Experience the power of a lightweight, feature-rich backend that seamlessly integrates into your framework of choice."_
