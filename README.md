@@ -26,6 +26,8 @@ _"All of the shadcn/ui magic, none of the React. A components library built with
 
 [Basecoat is easy to theme.](https://basecoatui.com/installation/#install-theming)
 
+In the Cursor chat window you can type `@basecoat-ui.mdc` and get AI assistance for your Basecoat UI CSS.
+
 ## Bknd
 
 > _"Experience the power of a lightweight, feature-rich backend that seamlessly integrates into your framework of choice."_
