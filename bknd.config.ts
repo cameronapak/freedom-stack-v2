@@ -33,7 +33,7 @@ const schema = em(
 
 export default {
   // we can use any libsql config, and if omitted, uses in-memory
-  app: (ctx: APIContext) => ({
+  app: (_ctx: APIContext) => ({
     connection: {
       url: process.env.DB_URL ?? "file:.astro/content.db"
     }
@@ -103,7 +103,8 @@ export default {
         {
           title: "What is Freedom Stack v2?",
           slug: "freedom-stack-v2",
-          content: "Freedom Stack v2 is a modern web development stack designed to be elementary, financially accessible, and entirely self-hostable. It's built for developers who want a simple yet powerful foundation for building web applications with AI code editor assistance."
+          content:
+            "Freedom Stack v2 is a modern web development stack designed to be elementary, financially accessible, and entirely self-hostable. It's built for developers who want a simple yet powerful foundation for building web applications with AI code editor assistance."
         }
       ]);
     },
