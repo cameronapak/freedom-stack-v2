@@ -38,7 +38,6 @@ Here's the best explanation for the heart of [Bknd](https://docs.bknd.io/motivat
 ### Remaining Bknd things
 
 1. **issue (blocking)**: Given I am signed in as an admin, `/data/entity/users` page throws a 404 for some reason when trying to view list of users.
-2. **nitpick (non-blocking)**: Given I host the Bknd assets from the public folder, how do I update the `logo_return_path` to go to `/` and not `/admin`?
 
 ### Database
 
