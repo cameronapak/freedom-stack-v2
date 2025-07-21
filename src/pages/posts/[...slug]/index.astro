@@ -1,0 +1,61 @@
+---
+import { getApi } from "@/bknd.ts";
+import Layout from "@/layouts/Layout.astro";
+
+// Get the API instance (matching homepage pattern for auth/cookies preservation)
+const api = await getApi(Astro.request.headers, { verify: true, mode: "dynamic" });
+
+// Verify that api.getUser() continues to work (for future features like edit buttons)
+// const user = api.getUser();
+// TODO: Use user for edit permissions when implemented
+
+const { slug } = Astro.params;
+
+console.log(`[POST_LOOKUP] Attempting to fetch post with slug: '${slug}'`);
+
+// If identifier is still undefined after normalization, redirect to 404
+if (!slug) {
+  console.error(`[POST_LOOKUP] No slug provided - redirecting to 404`);
+  return Astro.redirect("/404", 302);
+}
+
+// First, try to fetch the post by slug using readMany with filter
+let post: BkndEntity<"posts"> | null = null;
+try {
+  // Try using readMany first to see if the post exists
+  const posts = await api.data.readMany("posts");
+  console.log(`[POST_LOOKUP] Found ${posts.data.length} total posts`);
+
+  // Filter by slug manually
+  const matchingPost = posts.data.find((p) => p.slug === slug);
+  if (matchingPost) {
+    post = matchingPost;
+    console.log(`[POST_LOOKUP] Found post with slug '${slug}':`, matchingPost.title);
+  } else {
+    console.error(`[POST_LOOKUP] No posts found with slug '${slug}'`);
+    console.log(
+      `[POST_LOOKUP] Available slugs:`,
+      posts.data.map((p) => p.slug)
+    );
+  }
+} catch (error) {
+  console.error(`[POST_LOOKUP] Failed to fetch posts:`, error);
+}
+
+// If still no post found, redirect to 404
+if (!post) {
+  console.error(`[POST_LOOKUP] Post not found for identifier '${slug}' - redirecting to 404`);
+  return Astro.redirect("/404", 302);
+}
+---
+
+<Layout title={post.title}>
+  <article class="prose mx-auto max-w-2xl">
+    <h1 class="heading-1 mb-4">{post.title}</h1>
+    <p class="text-muted-foreground mb-8 text-sm">Views: {post.views ?? 0}</p>
+    <section set:html={post.content ?? ""} />
+    <nav class="mt-12">
+      <a href="/" class="btn-outline">← Back to posts</a>
+    </nav>
+  </article>
+</Layout>
