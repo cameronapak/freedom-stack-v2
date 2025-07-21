@@ -13,10 +13,10 @@ const user = api.getUser();
     <h1 class="heading-1">Freedom Stack v2</h1>
     {user?.email ? <p>Logged in as {user.email}</p> : <p>Not logged in</p>}
     <h2 class="heading-2">Posts</h2>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4">
       {
-        data.map((post) =>
-          <a href={`/posts/${post.slug ?? post.id}`} class="card block transition-shadow hover:shadow-lg">
+        data.map((post) => (
+          <a href={`/posts/${post.slug}`} class="card block transition-shadow hover:shadow-lg">
             <header>
               <h3 class="text-lg font-semibold">{post.title}</h3>
             </header>
@@ -24,7 +24,7 @@ const user = api.getUser();
               {post.content?.slice(0, 256) ?? "No preview available…"}
             </section>
           </a>
-        )
+        ))
       }
     </div>
   </section>
