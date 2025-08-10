@@ -26,11 +26,9 @@ const { title = "Freedom Stack v2" } = Astro.props as Props;
     {
       flash && (
         <div
-          x-data="{ open: false }"
-          x-show="open"
-          x-init="$nextTick(() => open = true)"
-          x-transition
-          @click="open = false; await cookieStore.delete('__bknd_flash');"
+          data-signals-open="true"
+          data-show="$open"
+          data-on-click="open = false; cookieStore.delete('__bknd_flash');"
           class="alert fixed top-4 right-4 z-50 max-w-xs shadow-lg"
         >
           <svg
