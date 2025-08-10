@@ -54,17 +54,6 @@ const { title = "Freedom Stack v2" } = Astro.props as Props;
     <slot />
   </body>
 
-  {/* AlpineJS */}
-  <script>
-    // @ts-ignore - No up to date types for this package
-    import Alpine from "alpinejs";
-    // @ts-ignore - No types for this package
-    import ajax from "@imacrayon/alpine-ajax";
-    window.Alpine = Alpine;
-    Alpine.plugin(ajax);
-    Alpine.start();
-  </script>
-
   <script>
     import "@starfederation/datastar/bundles/datastar";
   </script>
