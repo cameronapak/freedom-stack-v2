@@ -4,19 +4,18 @@
     "": {
       "name": "freedom-stack-v2",
       "dependencies": {
-        "@astrojs/netlify": "^6.5.6",
-        "@starfederation/datastar": "^1.0.0-beta.11",
-        "@tailwindcss/vite": "^4.1.8",
-        "astro": "^5.12.9",
+        "@astrojs/netlify": "^6.6.0",
+        "@tailwindcss/vite": "^4.1.16",
+        "astro": "^5.15.1",
         "basecoat-css": "^0.1.2",
         "bknd": "0.15.0",
-        "tailwindcss": "^4.1.8",
+        "tailwindcss": "^4.1.16",
       },
       "devDependencies": {
         "@starfederation/datastar-sdk": "^1.0.0-RC.1",
-        "prettier": "^3.5.3",
+        "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "prettier-plugin-tailwindcss": "^0.6.12",
+        "prettier-plugin-tailwindcss": "^0.6.14",
       },
       "peerDependencies": {
         "@libsql/client": "0.15.9",
@@ -602,9 +601,7 @@
 
     "@sinclair/typebox": ["@sinclair/typebox@0.34.30", "", {}, "sha512-gFB3BiqjDxEoadW0zn+xyMVb7cLxPCoblVn2C/BKpI41WPYi2d6fwHAlynPNZ5O/Q4WEiujdnJzVtvG/Jc2CBQ=="],
 
-    "@starfederation/datastar": ["@starfederation/datastar@1.0.0-beta.11", "", {}, "sha512-62TtP/Rm8HVnWxZm1rqhZo+0F57V7A6bKE0FMFMP+1ZeRoDd3lBqYUEdcbSPtIYf9fjoPEUd4TU3bgWS0CGy9w=="],
-
-    "@starfederation/datastar-sdk": ["@starfederation/datastar-sdk@1.0.0-RC.1", "", {}, "sha512-IaFqEeTxfFguPm5QFPCrg4mQx7BT5P5LIVPR+XMKztY/rtH/iW9K/D2A3BlEx7WD75ukKlfoLfuaqXlj7GB9/A=="],
+    "@starfederation/datastar-sdk": ["@starfederation/datastar-sdk@1.0.0-beta.11", "", { "dependencies": { "deepmerge-ts": "*", "type-fest": "*" } }, "sha512-6n61W9NuxNm9izOIRq/jPp+0sstfILpB2VVepN8CG/3WlOkn4r1EUiJeSCGjuEXrOkYHujFB+JMHalhFMRuxMg=="],
 
     "@swc/helpers": ["@swc/helpers@0.5.17", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A=="],
 
@@ -957,6 +954,8 @@
     "dedent": ["dedent@1.7.0", "", { "peerDependencies": { "babel-plugin-macros": "^3.1.0" }, "optionalPeers": ["babel-plugin-macros"] }, "sha512-HGFtf8yhuhGhqO07SV79tRp+br4MnbdjeVxotpn1QBl30pcLLCQjX5b2295ll0fv8RKDKsmWYrl05usHM9CewQ=="],
 
     "deepmerge": ["deepmerge@4.3.1", "", {}, "sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A=="],
+
+    "deepmerge-ts": ["deepmerge-ts@7.1.5", "", {}, "sha512-HOJkrhaYsweh+W+e74Yn7YStZOilkoPb6fycpwNLKzSPtruFs48nYis0zy5yJz1+ktUhHxoRDJ27RQAWLIJVJw=="],
 
     "defu": ["defu@6.1.4", "", {}, "sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg=="],
 
