@@ -41,9 +41,9 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
       context.cookies.set(
         "__bknd_flash",
         error?.message ||
-          (import.meta.env.DEV
-            ? "An unknown error occurred. Check the console for more details."
-            : "An unknown error occurred.")
+        (import.meta.env.DEV
+          ? "An unknown error occurred. Check the console for more details."
+          : "An unknown error occurred.")
       );
       return context.redirect("/");
     }
