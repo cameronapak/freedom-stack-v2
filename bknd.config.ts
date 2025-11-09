@@ -1,10 +1,9 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
-import { em, entity, number, text } from "bknd/data";
+import { libsql, em, entity, number, text } from "bknd";
 import { secureRandomString } from "bknd/utils";
 import { syncTypes } from "bknd/plugins";
-import { libsql } from "bknd/data";
 import { createClient } from "@libsql/client";
 
 const schema = em(
@@ -32,13 +31,17 @@ const schema = em(
 
 export default {
   app: (_ctx: APIContext) => ({
-    connection: !!process.env.DB_LIBSQL_URL && !!process.env.DB_LIBSQL_TOKEN ?
-      libsql(createClient({
-        url: process.env.DB_LIBSQL_URL,
-        authToken: process.env.DB_LIBSQL_TOKEN
-      })) : {
-        url: "file:.astro/content.db"
-      }
+    connection:
+      !!process.env.DB_LIBSQL_URL && !!process.env.DB_LIBSQL_TOKEN
+        ? libsql(
+            createClient({
+              url: process.env.DB_LIBSQL_URL,
+              authToken: process.env.DB_LIBSQL_TOKEN
+            })
+          )
+        : {
+            url: "file:.astro/content.db"
+          }
   }),
   // an initial config is only applied if the database is empty
   initialConfig: {
@@ -78,9 +81,12 @@ export default {
     // ... and media
     media: {
       enabled: true,
-      adapter: process.env.NODE_ENV === "development" ? registerLocalMediaAdapter()({
-        path: "./public/temp/uploads"
-      }) : undefined,
+      adapter:
+        process.env.NODE_ENV === "development"
+          ? registerLocalMediaAdapter()({
+              path: "./public/temp/uploads"
+            })
+          : undefined
     }
   },
   options: {
