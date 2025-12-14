@@ -21,7 +21,7 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@starfederation/datastar-sdk": "^1.0.0-RC.1",
+    "@starfederation/datastar-sdk": "^1.0.0-RC.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14"
