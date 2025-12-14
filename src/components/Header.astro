@@ -1,6 +1,7 @@
 ---
 import BirdIcon from "@/assets/lucide/bird.svg";
 import Authenticated from "./Authenticated.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 ---
 
 <header class="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center gap-2 border-b">
@@ -18,5 +19,6 @@ import Authenticated from "./Authenticated.astro";
         <a class="btn-ghost" href="/logout">Logout</a>
       </Authenticated>
     </div>
+    <ThemeSwitcher />
   </div>
 </header>
