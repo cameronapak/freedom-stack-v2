@@ -1,10 +1,11 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
-import { libsql, em, entity, number, text } from "bknd";
-import { secureRandomString } from "bknd/utils";
-import { syncTypes } from "bknd/plugins";
+import { em, entity, number, text, libsql } from "bknd";
+import { type CodeMode, code } from "bknd/modes";
+import { randomBytes } from "node:crypto";
 import { createClient } from "@libsql/client";
+import { writer } from "bknd/adapter/node";
 
 const schema = em(
   {
@@ -29,22 +30,21 @@ const schema = em(
   }
 );
 
-export default {
+/** @see https://docs.bknd.io/usage/introduction/#code-only-mode */
+const config = {
   app: (_ctx: APIContext) => ({
     connection:
-      !!process.env.DB_LIBSQL_URL && !!process.env.DB_LIBSQL_TOKEN
-        ? libsql(
-            createClient({
-              url: process.env.DB_LIBSQL_URL,
-              authToken: process.env.DB_LIBSQL_TOKEN
-            })
-          )
+      !!process.env.LIBSQL_DATABASE_URL && !!process.env.LIBSQL_DATABASE_TOKEN
+        ? libsql({
+            url: process.env.LIBSQL_DATABASE_URL,
+            authToken: process.env.DB_LIBSQL_TOKEN
+          })
         : {
             url: "file:.astro/content.db"
           }
   }),
   // an initial config is only applied if the database is empty
-  initialConfig: {
+  config: {
     data: schema.toJSON(),
     // we're enabling auth ...
     auth: {
@@ -52,7 +52,7 @@ export default {
       enabled: true,
       jwt: {
         issuer: "bknd-astro-example",
-        secret: secureRandomString(64)
+        secret: randomBytes(64).toString("hex")
       },
       guard: {
         enabled: true
@@ -106,7 +106,6 @@ export default {
         role: "default"
       });
 
-      // create some entries
       await ctx.em.mutator("posts").insertMany([
         {
           title: "What is Freedom Stack v2?",
@@ -116,16 +115,15 @@ export default {
         }
       ]);
     },
-    plugins: [
-      // Writes down the schema types on boot and config change,
-      // making sure the types are always up to date.
-      syncTypes({
-        enabled: true,
-        write: async (et) => {
-          // customize the location and the writer
-          await import("fs/promises").then((fs) => fs.writeFile("src/bknd-types.d.ts", et.toString()));
-        }
-      })
-    ]
+    mode: "code"
+  },
+  writer,
+  typesFilePath: "src/bknd-types.d.ts",
+  isProduction: process.env?.PROD === "true",
+  syncSchema: {
+    force: true,
+    drop: true
   }
-} as const satisfies AstroBkndConfig<APIContext>;
+} satisfies CodeMode<AstroBkndConfig<APIContext>>;
+
+export default code(config);

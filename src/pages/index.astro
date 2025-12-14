@@ -18,7 +18,7 @@ const user = api.getUser();
     <h2 class="heading-2">Posts</h2>
     <div class="grid grid-cols-1 gap-4">
       {
-        data.map((post) => (
+        data?.map((post) => (
           <a href={`/posts/${encodeURIComponent(post.slug)}`} class="card block transition-shadow hover:shadow-lg">
             <header>
               <h3 class="text-lg font-semibold">{post.title}</h3>

@@ -5,7 +5,7 @@
 
 declare global {
   interface Window {
-    Alpine: import("alpinejs").Alpine;
+    // Add any globally accessible types here
   }
 }
 
@@ -17,5 +17,3 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
-
-export { };
