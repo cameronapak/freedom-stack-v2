@@ -94,29 +94,30 @@ const config = {
   options: {
     // the seed option is only executed if the database was empty
     seed: async (ctx) => {
-      // create an admin user
-      await ctx.app.module.auth.createUser({
-        email: "admin@example.com",
-        password: "password",
-        role: "admin"
-      });
+      if (process.env.NODE_ENV === "development") {
+        // create an admin user
+        await ctx.app.module.auth.createUser({
+          email: "admin@example.com",
+          password: "password",
+          role: "admin"
+        });
 
-      // create a user
-      await ctx.app.module.auth.createUser({
-        email: "user@example.com",
-        password: "password",
-        role: "default"
-      });
+        // create a user
+        await ctx.app.module.auth.createUser({
+          email: "user@example.com",
+          password: "password",
+          role: "default"
+        });
 
-      // create some entries
-      await ctx.em.mutator("posts").insertMany([
-        {
-          title: "What is Freedom Stack v2?",
-          slug: "freedom-stack-v2",
-          content:
-            "Freedom Stack v2 is a modern web development stack designed to be elementary, financially accessible, and entirely self-hostable. It's built for developers who want a simple yet powerful foundation for building web applications with AI code editor assistance."
-        }
-      ]);
+        await ctx.em.mutator("posts").insertMany([
+          {
+            title: "What is Freedom Stack v2?",
+            slug: "freedom-stack-v2",
+            content:
+              "Freedom Stack v2 is a modern web development stack designed to be elementary, financially accessible, and entirely self-hostable. It's built for developers who want a simple yet powerful foundation for building web applications with AI code editor assistance."
+          }
+        ]);
+      }
     },
     mode: "code"
   },
