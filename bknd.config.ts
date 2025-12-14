@@ -1,10 +1,9 @@
 import type { AstroBkndConfig } from "bknd/adapter/astro";
 import type { APIContext } from "astro";
 import { registerLocalMediaAdapter } from "bknd/adapter/node";
-import { em, entity, number, text } from "bknd/data";
+import { em, entity, number, text, libsql } from "bknd";
 import { secureRandomString } from "bknd/utils";
 import { syncTypes } from "bknd/plugins";
-import { libsql } from "bknd/data";
 import { createClient } from "@libsql/client";
 
 const schema = em(
