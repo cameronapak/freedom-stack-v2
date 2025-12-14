@@ -1,7 +1,7 @@
 {
   "name": "freedom-stack-v2",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "predev": "bknd copy-assets --out public/bknd --clean",
     "dev": "astro dev",
