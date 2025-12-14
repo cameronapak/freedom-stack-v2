@@ -31,9 +31,9 @@ const { title = "Freedom Stack v2" } = Astro.props as Props;
     {
       flash && (
         <div
-          data-signals-open="true"
+          data-signals:open="true"
           data-show="$open"
-          data-on-click="open = false; cookieStore.delete('__bknd_flash');"
+          data-on:click="$open = false; cookieStore.delete('__bknd_flash');"
           class="alert fixed top-4 right-4 z-50 max-w-xs shadow-lg"
         >
           <svg
