@@ -19,6 +19,11 @@ const { title = "Freedom Stack v2" } = Astro.props as Props;
     <meta name="generator" content={Astro.generator} />
     <!-- "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life." John 3:16 NIV -->
     <title>{title}</title>
+    {/* Datastar - https://data-star.dev/ */}
+    <script
+      is:inline
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.6/bundles/datastar.js"></script>
   </head>
 
   <body class="bg-(background) text-(foreground)">
