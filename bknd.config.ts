@@ -35,13 +35,17 @@ const config = {
   app: (_ctx: APIContext) => ({
     connection:
       !!process.env.LIBSQL_DATABASE_URL && !!process.env.LIBSQL_DATABASE_TOKEN
-        ? libsql({
-            url: process.env.LIBSQL_DATABASE_URL,
-            authToken: process.env.DB_LIBSQL_TOKEN
-          })
-        : {
-            url: "file:.astro/content.db"
-          }
+        ? libsql(
+            createClient({
+              url: process.env.LIBSQL_DATABASE_URL,
+              authToken: process.env.DB_LIBSQL_TOKEN
+            })
+          )
+        : libsql(
+            createClient({
+              url: "file:.astro/content.db"
+            })
+          )
   }),
   // an initial config is only applied if the database is empty
   config: {
