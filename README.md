@@ -54,16 +54,6 @@ npx degit https://github.com/cameronapak/freedom-stack-v2 my-project
 
 ## Setup
 
-### Create User
-
-This may look funny, but running bknd this way makes it where bknd will use our `bknd.config.ts` file.
-
-```bash
-npx tsx node_modules/.bin/bknd user create
-```
-
-### Run App
-
 Using Node Version Manager?
 
 ```bash
@@ -73,13 +63,21 @@ nvm use
 Install the packages.
 
 ```bash
-npm install
+bun install
+```
+
+### Create User
+
+Create your first user (this runs bknd with our `bknd.config.ts` file):
+
+```bash
+npx tsx node_modules/.bin/bknd user create
 ```
 
 Now, let's run the app!
 
 ```bash
-npm run dev
+bun dev
 ```
 
 ## Main changes since v1
