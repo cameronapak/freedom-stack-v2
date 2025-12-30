@@ -1,5 +1,8 @@
 # Freedom Stack v2 (WIP)
 
+> [!CAUTION]
+> This repo is now archived. Please check out [Freedom Stack v3](https://github.com/cameronapak/freedom-stack-v3). 
+
 > [!IMPORTANT]
 > This project is still a work in progress. It's improving continuously and will be ready soon.
 > Documentation for using this project is currently limited but will be expanded shortly.
